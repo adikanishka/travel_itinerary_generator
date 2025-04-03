@@ -1,0 +1,67 @@
+/* display.css */
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+.highlight {
+    color: #ff5733;
+    font-weight: bold;
+}
+
+.itinerary-box {
+    background: #f1f1f1;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-save {
+    background: #28a745;
+}
+
+.btn-print {
+    background: #17a2b8;
+}
+
+.btn-download {
+    background: #ff9800;
+}
+
+.btn-back {
+    background: #6c757d;
+}
+

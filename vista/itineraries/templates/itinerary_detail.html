@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerary Details</title>
+    <link rel="stylesheet" href="{% static 'display.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Itinerary Details</h1>
+        <br>
+    </header>
+    <main>
+        <h1>{{ itinerary.title }}</h1>
+        <p><strong>Start Date:</strong> {{ itinerary.start_date }}</p>
+        <p><strong>End Date:</strong> {{ itinerary.end_date }}</p>
+        <p><strong>Destinations:</strong> {{ itinerary.destinations }}</p>
+        <p><strong>Budget:</strong> {{ itinerary.budget }}</p>
+        <p><strong>Details:</strong></p>
+        <div class="itinerary-box container">
+            <!-- Display the itinerary content with line breaks -->
+            <p>{{ itinerary.content|linebreaksbr }}</p>
+        
+        </div>
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Travel Itinerary</p>
+    </footer>
+</body>
+</html>

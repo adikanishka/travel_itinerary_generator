@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Expenses</title>
+</head>
+<body>
+    <h1>Track Your Expenses</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Form fields rendered here -->
+        <button type="submit">Save Expense</button>
+    </form>
+
+    <h2>Tracked Expenses</h2>
+    <table border="1">
+        <tr>
+            <th>Category</th>
+            <th>Estimated Cost</th>
+            <th>Actual Cost</th>
+            <th>Description</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.get_category_display }}</td>
+            <td>{{ expense.estimated_cost }}</td>
+            <td>{{ expense.actual_cost }}</td>
+            <td>{{ expense.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Total Expenses</h2>
+<p><strong>Total Spent:</strong> ${{ total_expense }}</p>
+
+<h2>Category-wise Expenses</h2>
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Total Amount</th>
+    </tr>
+    {% for item in category_expenses %}
+    <tr>
+        <td>{{ item.category }}</td>
+        <td>{{ item.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Monthly Expense Trends</h2>
+<table>
+    <tr>
+        <th>Month</th>
+        <th>Total Spent</th>
+    </tr>
+    {% for item in monthly_expenses %}
+    <tr>
+        <td>{{ item.month }}</td>
+        <td>{{ item.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Budget vs Actual</h2>
+<p><strong>Budgeted Amount:</strong> {{ budgeted_amount }}</p>
+<p><strong>Total Spent:</strong> {{ total_expense }}</p>
+<p><strong>Remaining Budget:</strong> {{ remaining_budget }}</p>
+{% if over_budget %}
+<p style="color: red;"><strong>Over Budget by:</strong> {{ exceeded_by }}</p>
+{% endif %}
+
+<h2>Top Expense Categories</h2>
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Total Amount</th>
+    </tr>
+    {% for item in top_categories %}
+    <tr>
+        <td>{{ item.category }}</td>
+        <td>{{ item.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
