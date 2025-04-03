@@ -155,7 +155,9 @@ def itinerary_detail(request, itinerary_id):
     return render(request, 'itinerary_detail.html', {'itinerary': itinerary})
 
 from django.http import HttpResponse
+from django.urls import reverse
 def download_pdf(request):
+    pdf_url = reverse('download_pdf') 
     # Temporary response - Replace with actual PDF logic
     return HttpResponse("PDF download feature coming soon!", content_type="text/plain")
 
@@ -212,3 +214,4 @@ def track_expenses(request):
     }
 
     return render(request, 'track_expenses.html', context)
+

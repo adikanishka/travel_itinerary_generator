@@ -16,7 +16,7 @@ urlpatterns = [
     path('display/',views.display_itinerary,name='display'),
     path('save-itinerary/', views.save_itinerary, name='save_itinerary'),
     path('itinerary/<int:itinerary_id>/', views.itinerary_detail, name='itinerary_detail'),
-    path('download-pdf/', download_pdf, name='download_pdf'),
+    path('download-pdf/', views.download_pdf, name='download_pdf'),
     path('track-expenses/', views.track_expenses, name='track_expenses'),
      path('delete/<int:itinerary_id>/', delete_itinerary, name='delete_itinerary' ),
 ]
