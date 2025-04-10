@@ -38,3 +38,42 @@ def generate(source, destination, start_date, end_date, no_of_days,travel_mode, 
     return itinerary
 
 #generate()
+
+import requests
+
+load_dotenv()  # Loads .env file
+
+def get_weather(city, start_date, end_date):
+
+    WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
+    print("🌍 City requested:", city)
+    print("📅 Start Date:", start_date)
+    print("📅 End Date:", end_date)
+
+    url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}/{start_date}/{end_date}?unitGroup=metric&key={WEATHER_API_KEY}&include=days"
+
+    print("🌐 Requesting URL:", url)
+
+    response = requests.get(url)
+    print("📥 Raw Response Text:", response.text)  # <-- Debug this!
+
+    try:
+        data = response.json()
+    except Exception as e:
+        print("❌ Failed to decode JSON:", str(e))
+        return None
+
+    if 'days' in data:
+        forecast = [
+            {
+                'datetime': day['datetime'],
+                'tempmax': day['tempmax'],
+                'tempmin': day['tempmin'],
+                'description': day.get('description', 'No description')
+            }
+            for day in data['days']
+        ]
+        return forecast
+    else:
+        print("⚠️ 'days' not found in data")
+        return None

@@ -44,9 +44,30 @@ def logout_view(request):
 def generate_views(request):
     return render(request, 'generate_form.html')
 
+from .services import get_weather
+
 def display_itinerary(request):
-    # Assuming the itinerary data is already saved or passed
-    return render(request, 'display.html')
+    city_name = request.GET.get('destination')
+
+    weather_data = get_weather(city_name)  # 👈 ADD THIS for debugging
+    print("🔍 Context being passed to template:", {
+    'weather_data': weather_data,
+    'destination': city_name,
+    })
+    context = {
+    'weather_data': weather_data,
+    'city': city_name,
+    'source': request.GET.get('source'),
+    'destination': city_name,
+    'start_date': request.GET.get('start_date'),
+    'end_date': request.GET.get('end_date'),
+    'budget': request.GET.get('budget'),
+    'itinerary': request.GET.get('itinerary', 'No itinerary available')
+    }
+    print("🧪 Context sent to template:", context)
+    return render(request, 'display.html', context)
+
+ 
 
 
 from .reg_form import RegisterForm
@@ -82,6 +103,9 @@ def itinerary_generator(request):
         itinerary = generate(source, destination, start_date, end_date, no_of_days,travel_mode, budget)
         print("GET Params:", request.GET)
         print(f"Source: {source}, Destination: {destination}, Start: {start_date}, End: {end_date}, No of Days: {no_of_days},Travel:{travel_mode}, Budget: {budget}")
+        weather_data = get_weather(destination, start_date, end_date)
+        weather_data = weather_data[:int(no_of_days)]
+        print("🌤️ Weather Data:", weather_data)
 
         itinerary = markdown(itinerary)
         soup = BeautifulSoup(itinerary, "html.parser")
@@ -100,7 +124,7 @@ def itinerary_generator(request):
             end_date=end_date,
             budget=budget,  # Optional: Adjust if budget is available
             destinations=json.dumps([source, destination]),
-            content=itinerary
+            content=itinerary,
         )
 
         return render(request, 'display.html', {
@@ -111,8 +135,9 @@ def itinerary_generator(request):
         'no_of_days': no_of_days,
         'travel_mode': travel_mode,
         'budget': budget,
-        'itinerary': itinerary
-    })
+        'itinerary': itinerary,
+        'weather_data': weather_data
+        })
 
 def save_itinerary(request):
     if request.method == 'POST':

@@ -9,10 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <h1>🛫 Itinerary from <span class="highlight">{{ source }}</span> to <span class="highlight">{{ destination }}</span></h1>
-        <p><strong>📅 Start Date:</strong> {{ start_date }}</p>
-        <p><strong>📅 End Date:</strong> {{ end_date }}</p>
-        <p><strong>💰 Budget:</strong> ₹{{ budget }}</p>
         
         <h2>📍 Your Travel Plan:</h2>
         <div class="itinerary-box">
@@ -31,8 +27,33 @@
             <a href="{% url 'generate' %}" class="btn btn-back">🔙 Back</a>
         </div>
         
+        
+        
+
+        <h2>🌤️ Weather Forecast:</h2>
+
+        {% if weather_data %}
+        <div>
+            <h3>🌦️ Weather Forecast for {{ destination|capfirst }}:</h3>
+            <ul>
+                {% for day in weather_data %}
+                    <li>
+                        <p>Date: {{ day.datetime }}</p>
+                        <p>Max Temp: {{ day.tempmax }}°C</p>
+                        <p>Min Temp: {{ day.tempmin }}°C</p>
+                        <p>Description: {{ day.description }}</p>
+                        
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+            <p>No weather data available.</p>
+        {% endif %} 
 
     </div>
+
+
 
     <script>
         function saveItinerary() {
