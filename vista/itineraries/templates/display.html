@@ -9,7 +9,13 @@
 </head>
 <body>
     <div class="container">
-        
+        <h1>🛫 Itinerary from <span class="highlight">{{ source }}</span> to <span class="highlight">{{ destination }}</span></h1>
+        <br><BR>
+        <a href="{% url 'places' %}?destination={{ destination }}&start_date={{ start_date }}&end_date={{ end_date }}">PLACES TO EXPLORE</a>
+        <br><br>
+        <p><strong>📅 Start Date:</strong> {{ start_date }}</p>
+        <p><strong>📅 End Date:</strong> {{ end_date }}</p>
+        <p><strong>💰 Budget:</strong> ₹{{ budget }}</p>
         <h2>📍 Your Travel Plan:</h2>
         <div class="itinerary-box">
             <p>{{ itinerary|linebreaksbr }}</p>  

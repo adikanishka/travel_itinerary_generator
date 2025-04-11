@@ -69,6 +69,7 @@ def get_weather(city, start_date, end_date):
                 'datetime': day['datetime'],
                 'tempmax': day['tempmax'],
                 'tempmin': day['tempmin'],
+                'humidity': day['humidity'],
                 'description': day.get('description', 'No description')
             }
             for day in data['days']
@@ -77,3 +78,23 @@ def get_weather(city, start_date, end_date):
     else:
         print("⚠️ 'days' not found in data")
         return None
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+PLACES_API_KEY = os.getenv("PLACES_API_KEY")
+
+def get_places(lat, lng, place_type='restaurant', api_key=PLACES_API_KEY):
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+    params = {
+        'location': f'{lat},{lng}',
+        'radius': 5000,
+        'type': place_type,
+        'key': api_key
+    }
+    response = requests.get(url, params=params)
+    print("🔍 Places API Response:", response.text)
+    return response.json().get('results', [])
+
+   

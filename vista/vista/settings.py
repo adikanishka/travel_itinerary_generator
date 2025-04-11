@@ -140,3 +140,9 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+from decouple import config
+
+PLACES_API_KEY = config("PLACES_API_KEY")
+WEATHER_API_KEY = config("WEATHER_API_KEY")
+GEMINI_API_KEY = config("GEMINI_API_KEY")

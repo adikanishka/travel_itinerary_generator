@@ -240,3 +240,47 @@ def track_expenses(request):
 
     return render(request, 'track_expenses.html', context)
 
+import os
+PLACES_API_KEY = os.getenv('PLACES_API_KEY')
+
+from .services import get_places
+from .utils import get_coordinates  # Optional utility to get lat/lng from city
+from django.conf import settings
+def get_top_places(results, top_n=5,min_reviews=50):
+    # Filter out places without rating and sort by rating (descending)
+    sorted_places = sorted(
+        [place for place in results if 'rating' in place and place.get('user_ratings_total', 0) >= min_reviews],
+        key=lambda x: x['rating'],
+        reverse=True
+    )
+    return sorted_places[:top_n]
+def places(request):
+    city_name = request.GET.get('destination')
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    print(f"Destination: {city_name}, Start: {start_date}, End: {end_date}")
+
+    if city_name and start_date and end_date:
+        lat, lng = get_coordinates(city_name, settings.PLACES_API_KEY)
+        print(f"Coordinates for {city_name}: {lat}, {lng}")
+
+        all_restaurants = get_places(lat, lng, 'restaurant', settings.PLACES_API_KEY)
+        all_hotels = get_places(lat, lng, 'lodging', settings.PLACES_API_KEY)
+        attractions = get_places(lat, lng, 'tourist_attraction', settings.PLACES_API_KEY)
+        restaurants = get_top_places(all_restaurants)
+        hotels = get_top_places(all_hotels)
+    else:
+        lat = lng = None
+        restaurants = hotels = attractions=[]
+        print("No valid coordinates found.")
+
+    context = {
+        'city': city_name,
+        'weather_data': get_weather(city_name, start_date, end_date) if city_name else [],
+        'hotels': hotels,
+        'restaurants': restaurants,
+        'attractions': attractions,
+    }
+
+    return render(request, 'places.html', context)
