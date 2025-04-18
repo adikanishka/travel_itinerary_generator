@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Dashboard</title>
     <link rel="stylesheet" href="{% static 'itineraries/dashboard1.css' %}">
-        <!-- <img src="{% static 'images/sec.jpg' %}" alt="Background" /> -->
+        
     <style>
         body {
           background-image: url("{% static 'images/sec.jpg' %}");
@@ -29,6 +29,7 @@
         <!-- Suggested Itineraries (Left Aligned) -->
         <div class="container">
             <h2>🧳 Suggested Itineraries</h2>
+            <div class="suggested-itineraries">
             {% for destination in suggested_destinations %}
                 <div class="destination-card">
                     <img src="{{ destination.image }}" alt="{{ destination.name }}" class="destination-image">
@@ -39,6 +40,7 @@
             {% empty %}
                 <p>No suggested destinations available.</p>
             {% endfor %}
+        </div>
         </div>
 
         <!-- Previous Itineraries -->

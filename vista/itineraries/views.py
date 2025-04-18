@@ -32,7 +32,7 @@ def dashboard_view(request):
         user_itineraries = Itinerary.objects.filter(user=request.user).order_by('-created_at')
     
     # Suggested itineraries (Fetching random itineraries)
-        suggested_destinations = Destination.objects.all()[:5]
+        suggested_destinations = Destination.objects.all()
         return render(request, 'dashboard.html', {
             'user_itineraries': user_itineraries,
             'suggested_destinations': suggested_destinations

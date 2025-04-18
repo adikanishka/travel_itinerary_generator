@@ -15,9 +15,10 @@
 </head>
 <body>
   <div class="container">
+    <br><br><br>
     <h1>Welcome to VistaStories ✈️</h1>
 
-    
+    <br>
     
       {% if user.is_authenticated %}
       <div class="small-links">
@@ -27,9 +28,8 @@
       {% endif %}
 
       <h2 class="login-required">🔒 LOGIN REQUIRED</h2>
-
+      <br>
     <div class="btn-container">
-      <a href="{% url 'generate' %}" class="btn btn-generate">📝 Generate a New Itinerary</a>
       <a href="{% url 'login' %}" class="btn btn-login">🔑 Login</a>
       <a href="{% url 'register' %}" class="btn btn-register">🆕 Register</a>
     </div>
