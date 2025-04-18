@@ -1,0 +1,94 @@
+
+body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4faff;
+            height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+    padding: 0;
+    background-image: url("{% static 'images/gfpic.jpg' %}"); /* adjust path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    width: 83%;
+        }
+
+        .main-heading {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .form-wrapper {
+    position: absolute;
+    top: 150px;
+    right: 250px; /* Increased from 60px to 100px */
+}
+
+
+        .container {
+            max-width: 500px;
+            background: #93674a;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .btn {
+            display: block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        /* Optional: styling for future left-side image */
+        .left-decor {
+            position: absolute;
+            top: 160px;
+            left: 60px;
+        }
+
+        .decor-image {
+            max-width: 300px;
+            height: auto;
+        }
+        h1{
+            color: white;
+        }

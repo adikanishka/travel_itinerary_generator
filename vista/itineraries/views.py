@@ -246,7 +246,7 @@ PLACES_API_KEY = os.getenv('PLACES_API_KEY')
 from .services import get_places
 from .utils import get_coordinates  # Optional utility to get lat/lng from city
 from django.conf import settings
-def get_top_places(results, top_n=5,min_reviews=50):
+def get_top_places(results, top_n=5,min_reviews=5):
     # Filter out places without rating and sort by rating (descending)
     sorted_places = sorted(
         [place for place in results if 'rating' in place and place.get('user_ratings_total', 0) >= min_reviews],

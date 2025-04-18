@@ -1,20 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Itinerary</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Register | Travel Itinerary</title>
+    <link rel="stylesheet" href="{% static 'register1.css' %}">
+    <style>
+        body {
+            background-image: url("{% static 'images/canvab.jpg' %}");
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+        }
+
+        .overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <h2>Register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
-    </form>
-    <a href="{% url 'login' %}">Already have an account? Login</a>
+    <div class="overlay">
+        <div class="login-container">
+            <h2>Register</h2>
+            <p class="subtitle">Create an account to begin planning your perfect trip.</p>
 
-<body>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Register</button>
+            </form>
+
+            <a href="{% url 'login' %}">Already have an account? Login</a>
+            <br>
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
 </body>
 </html>

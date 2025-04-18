@@ -1,92 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Itinerary</title>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travel Itinerary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'index1.css' %}">
+  <style>
+    body {
+          background-image: url("{% static 'images/first.jpg' %}");
+        }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🌍 Welcome to Travel Itinerary! ✈️</h1>
-        {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-        <p class="subtitle">Your personalized travel plans are just a click away.</p>
-        <a href="{% url 'dashboard' %}">Go to Dashboard</a>
-        <br>
-        
-        <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-        <h2 class="login-required">🔒 LOGIN REQUIRED</h2>
-        <p class="subtitle">Access your personalized travel plans and start exploring today.</p>
-        
-        <div class="btn-container">
-            {% comment %} <a href="{% url 'generate' %}" class="btn">📝 Generate a New Itinerary</a> {% endcomment %}
-            <a href="{% url 'login' %}" class="btn btn-login">🔑 Login</a>
-            <a href="{% url 'register' %}" class="btn btn-register">🆕 Register</a>
-        {% endif %}
-        </div>
-    </div>
+  <div class="container">
+    <h1>Welcome to VistaStories ✈️</h1>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4faff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            max-width: 500px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #4A90E2;
-        }
-        .login-required {
-            color: #FF5722;
-            font-size: 1.2em;
-        }
-        .subtitle {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .btn {
-            display: block;
-            background: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            text-decoration: none;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #45a049;
-        }
-        .btn-login {
-            background: #FF9800;
-        }
-        .btn-login:hover {
-            background: #e68900;
-        }
-    </style>
+    
+    
+      {% if user.is_authenticated %}
+      <div class="small-links">
+      <a href="{% url 'dashboard' %}">Go To Dashboard</a>
+      <a href="{% url 'logout' %}">Logout</a>
+      </div>
+      {% endif %}
+
+      <h2 class="login-required">🔒 LOGIN REQUIRED</h2>
+
+    <div class="btn-container">
+      <a href="{% url 'generate' %}" class="btn btn-generate">📝 Generate a New Itinerary</a>
+      <a href="{% url 'login' %}" class="btn btn-login">🔑 Login</a>
+      <a href="{% url 'register' %}" class="btn btn-register">🆕 Register</a>
+    </div>
+  </div>
+ 
+  
+
 </body>
 </html>
+
+
+
+
+
 

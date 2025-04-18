@@ -1,0 +1,156 @@
+
+/* General reset */
+* {
+    box-sizing: border-box;
+}
+
+/* Body and HTML setup */
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+    background-color: rgba(133, 93, 79, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Main heading styling */
+.main-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Container for content */
+.container {
+    background-color: rgba(171, 115, 97, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Flexbox for the info and travel sections */
+.info-travel-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Info Container */
+.info-container {
+    min-width: 280px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* Travel Container */
+.travel-container {
+    flex: 1;
+    min-width: 280px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Links inside info container */
+.info-container a {
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Weather container */
+.weather-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Weather list style */
+.weather-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Weather list items styling */
+.weather-container li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .info-container, .weather-container, .travel-container {
+        min-width: 100%;
+    }
+
+    .main-heading {
+        font-size: 1.5rem;
+    }
+
+    .info-container, .weather-container, .travel-container {
+        padding: 15px;
+    }
+
+    .info-travel-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .page-wrapper {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .info-container, .weather-container, .travel-container {
+        padding: 10px;
+    }
+
+    .main-heading {
+        font-size: 1.2rem;
+    }
+
+    .info-travel-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
