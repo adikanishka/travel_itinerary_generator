@@ -5,95 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Travel Itinerary</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'generate_form1.css' %}">
+    <img src="{% static 'images/gfpic.jpg' %}">
 </head>
 <body>
-    <div class="container">
-        <h1>🌍 Generate Your Travel Itinerary ✈️</h1>
-        <p class="subtitle">Plan your trip effortlessly with our AI-powered generator!</p>
-        
-        <form action="/generate-itinerary/" method="get" target="_blank">
-            <label for="source">📍 Source:</label>
-            <input type="text" id="source" name="source" placeholder="Enter starting location" required>
-
-            <label for="destination">🎯 Destination:</label>
-            <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
-
-            <label for="start_date">📅 Start Date:</label>
-            <input type="date" id="start_date" name="start_date" required>
-
-            <label for="end_date">📅 End Date:</label>
-            <input type="date" id="end_date" name="end_date" required>
-            <label for=no_of_days>📅 Number of Days:</label>
-            <input type="number" id="no_of_days" name="no_of_days" placeholder="Enter number of days" required>
-            <label for="travel_mode">🚗 Travel Mode:</label>
-            <select id="travel_mode" name="travel_mode" required>
-                <option value="car">Car</option>
-                <option value="bus">Bus</option>
-                <option value="train">Train</option>
-                <option value="flight">Flight</option>
-            <label for="budget">💰 Budget (INR):</label>
-            <input type="number" id="budget" name="budget" placeholder="Enter your budget" required>
-
-            <button type="submit" class="btn">🚀 Generate Itinerary</button>
-        </form>
+    <!-- Heading centered in the page -->
+    <div class="main-heading">
+        <h1>🌍 Generate Your Travel Itinerary </h1>
     </div>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4faff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            max-width: 500px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #4A90E2;
-        }
-        .subtitle {
-            font-size: 1.1em;
-            color: #555;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        .btn {
-            display: block;
-            background: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin: 20px auto;
-            width: 80%;
-        }
-        .btn:hover {
-            background: #45a049;
-        }
-    </style>
+    <!-- Optional left side decoration/image -->
+    <div class="left-decor">
+        <!-- Example image: -->
+        <!-- <img src="{% static 'images/travel-map.png' %}" alt="Travel" class="decor-image"> -->
+    </div>
+
+    <!-- Form positioned to the right and down -->
+    <div class="form-wrapper">
+        <div class="container">
+            <p class="subtitle">Plan your trip effortlessly with our AI-powered generator!</p>
+            
+            <form action="/generate-itinerary/" method="get" target="_blank">
+                <label for="source">📍 Source:</label>
+                <input type="text" id="source" name="source" placeholder="Enter starting location" required>
+
+                <label for="destination">🎯 Destination:</label>
+                <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+
+                <label for="start_date">📅 Start Date:</label>
+                <input type="date" id="start_date" name="start_date" required>
+
+                <label for="end_date">📅 End Date:</label>
+                <input type="date" id="end_date" name="end_date" required>
+
+                <label for="no_of_days">📅 Number of Days:</label>
+                <input type="number" id="no_of_days" name="no_of_days" placeholder="Enter number of days" required>
+
+                <label for="travel_mode">🚗 Travel Mode:</label>
+                <select id="travel_mode" name="travel_mode" required>
+                    <option value="car">Car</option>
+                    <option value="bus">Bus</option>
+                    <option value="train">Train</option>
+                    <option value="flight">Flight</option>
+                </select>
+
+                <label for="budget">💰 Budget (INR):</label>
+                <input type="number" id="budget" name="budget" placeholder="Enter your budget" required>
+
+                <button type="submit" class="btn">🚀 Generate Itinerary</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
+
 

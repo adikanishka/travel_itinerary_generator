@@ -2,47 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Itinerary</title>
-    <link rel="stylesheet" href="{% static 'places.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{% static 'places.css' %}">
+  <title>Travel Itinerary</title>
+<style>
+  body{
+    background-image: url("{% static 'images/places_image.jpg' %}");
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        {% if attractions %}
-            <h2>Top Tourist Attractions</h2>
-            <ul>
-            {% for place in attractions %}
-                <li>
-                <a href="https://www.google.com/maps/place/?q=place_id:{{ place.place_id }}" target="_blank">
-                    <strong>{{ place.name }}</strong></a> – Rating: {{ place.rating }} ({{ place.user_ratings_total }} reviews)
-                </li>
-            {% endfor %}
-            </ul>
-        {% endif %}
+  <div class="container">
+    {% if attractions %}
+      <h2>🌟 Top Tourist Attractions</h2>
+      <ul>
+        {% for place in attractions %}
+          <li>
+            <a href="https://www.google.com/maps/place/?q=place_id:{{ place.place_id }}" target="_blank">
+              <strong>{{ place.name }}</strong>
+            </a> – Rating: {{ place.rating }} ({{ place.user_ratings_total }} reviews)
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
-        <h2>Top Hotels</h2>
-        <ul>
-        {% for hotel in hotels %}
-            <li>
-            <a href="https://www.google.com/maps/place/?q=place_id:{{ hotel.place_id }}" target="_blank">
+    <h2>🏨 Top Hotels</h2>
+    <ul>
+      {% for hotel in hotels %}
+        <li>
+          <a href="https://www.google.com/maps/place/?q=place_id:{{ hotel.place_id }}" target="_blank">
             {{ hotel.name }}
-            </a> - {{ hotel.vicinity }}
-            </li>
-        {% endfor %}
-        </ul>
+          </a> - {{ hotel.vicinity }}
+        </li>
+      {% endfor %}
+    </ul>
 
-        <h2>Top Restaurants</h2>
-        <ul>
-        {% for restaurant in restaurants %}
-            <li>
-            <a href="https://www.google.com/maps/place/?q=place_id:{{ restaurant.place_id }}" target="_blank">
+    <h2>🍽️ Top Restaurants</h2>
+    <ul>
+      {% for restaurant in restaurants %}
+        <li>
+          <a href="https://www.google.com/maps/place/?q=place_id:{{ restaurant.place_id }}" target="_blank">
             {{ restaurant.name }}
-            </a> - {{ restaurant.vicinity }}
-            </li>
-        {% endfor %}
-        </ul>
-
-    </div>
+          </a> - {{ restaurant.vicinity }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </body>
 </html>
+

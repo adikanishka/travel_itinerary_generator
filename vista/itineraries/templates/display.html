@@ -5,91 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Itinerary</title>
-    <link rel="stylesheet" href="{% static 'display.css' %}">
+    <link rel="stylesheet" href="{% static 'display1.css' %}">
+    <style>
+        body {
+          background-image: url("{% static 'images/fourth.jpg' %}");
+        }
+    </style>
+
 </head>
 <body>
-    <div class="container">
-        <h1>🛫 Itinerary from <span class="highlight">{{ source }}</span> to <span class="highlight">{{ destination }}</span></h1>
-        <br><BR>
-        <a href="{% url 'places' %}?destination={{ destination }}&start_date={{ start_date }}&end_date={{ end_date }}">PLACES TO EXPLORE</a>
-        <br><br>
-        <p><strong>📅 Start Date:</strong> {{ start_date }}</p>
-        <p><strong>📅 End Date:</strong> {{ end_date }}</p>
-        <p><strong>💰 Budget:</strong> ₹{{ budget }}</p>
-        <h2>📍 Your Travel Plan:</h2>
-        <div class="itinerary-box">
-            <p>{{ itinerary|linebreaksbr }}</p>  
-        </div>
-
-        <div class="button-container">
-        
-            <!-- Print Itinerary -->
-            <button class="btn btn-print" onclick="window.print()">🖨️ Print</button>
-
-            <!-- Download as PDF -->
-            <a href="{% url 'download_pdf' %}" class="btn btn-download">📄 Download PDF</a>
-            <br><br>
-            <!-- Back to Form -->
-            <a href="{% url 'generate' %}" class="btn btn-back">🔙 Back</a>
-        </div>
-        
-        
-        
-
-        <h2>🌤️ Weather Forecast:</h2>
-
-        {% if weather_data %}
-        <div>
-            <h3>🌦️ Weather Forecast for {{ destination|capfirst }}:</h3>
-            <ul>
-                {% for day in weather_data %}
+    <div class="page-wrapper">
+        <h1 class="main-heading">🛫 ITINERARY FROM  <span>{{ source }}</span> to <span>{{ destination }}</span></h1>
+        <div class="container">
+        <div class="info-travel-wrapper">
+            <div class="info-container">
+                <p><strong>📅 Start Date:</strong> {{ start_date }}</p>
+                <p><strong>📅 End Date:</strong> {{ end_date }}</p>
+                <p><strong>💰 Budget:</strong> ₹{{ budget }}</p>
+                <a href="{% url 'places' %}?destination={{ destination }}&start_date={{ start_date }}&end_date={{ end_date }}">🌍 Places to Explore</a>
+            </div>
+            <div class="weather-container">
+                <h2>🌤️ WEATHER FORECAST</h2>
+                {% if weather_data %}
+                <ul>
+                    {% for day in weather_data %}
                     <li>
-                        <p>Date: {{ day.datetime }}</p>
-                        <p>Max Temp: {{ day.tempmax }}°C</p>
-                        <p>Min Temp: {{ day.tempmin }}°C</p>
-                        <p>Description: {{ day.description }}</p>
-                        
+                        <strong>{{ day.datetime }}</strong><br>
+                        Max: {{ day.tempmax }}°C | Min: {{ day.tempmin }}°C<br>
+                        {{ day.description }}
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No weather data available.</p>
+                {% endif %}
+            </div>
         </div>
-        {% else %}
-            <p>No weather data available.</p>
-        {% endif %} 
+            <div class="travel-container">
+                <h2>📍 TRAVEL PLAN</h2>
+                <p>{{ itinerary|linebreaksbr }}</p>
+            </div>
+        
+
 
     </div>
-
-
-
-    <script>
-        function saveItinerary() {
-            const itineraryData = {
-                source: "{{ source|escapejs }}",
-                destination: "{{ destination|escapejs }}",
-                start_date: "{{ start_date|escapejs }}",
-                end_date: "{{ end_date|escapejs }}",
-                budget: "{{ budget|escapejs }}",
-                itinerary: `{{ itinerary|escapejs }}` // Escape special characters
-            };
-
-            fetch('/save-itinerary/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify(itineraryData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    alert('✅ Itinerary saved successfully!');
-                } else {
-                    alert('❌ Failed to save itinerary.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        }
-    </script>
 </body>
 </html>

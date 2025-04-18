@@ -89,7 +89,7 @@ def get_places(lat, lng, place_type='restaurant', api_key=PLACES_API_KEY):
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
     params = {
         'location': f'{lat},{lng}',
-        'radius': 5000,
+        'radius': 10000,
         'type': place_type,
         'key': api_key
     }
