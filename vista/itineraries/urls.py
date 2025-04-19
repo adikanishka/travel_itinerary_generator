@@ -20,4 +20,5 @@ urlpatterns = [
     path('track-expenses/', views.track_expenses, name='track_expenses'),
     path('delete/<int:itinerary_id>/', delete_itinerary, name='delete_itinerary' ),
     path('places/', views.places, name='places'),
+    path('destination/<int:destination_id>/itineraries/', views.destination_suggested_itineraries, name='destination_suggested_itineraries'),
 ]

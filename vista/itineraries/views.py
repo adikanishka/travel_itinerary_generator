@@ -284,3 +284,17 @@ def places(request):
     }
 
     return render(request, 'places.html', context)
+
+from .models import SuggestedItinerary
+
+def destination_suggested_itineraries(request, destination_id):
+    destination = Destination.objects.get(id=destination_id)
+    
+    # Corrected query for ManyToManyField
+    itineraries = SuggestedItinerary.objects.filter(destinations=destination)
+
+    return render(request, 'destination_suggested_itineraries.html', {
+        'destination': destination,
+        'itineraries': itineraries
+    })
+

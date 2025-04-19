@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Dashboard</title>
+    <link rel="stylesheet" href="{% static 'itineraries/dashboard1.css' %}">
+        
+    <style>
+        body {
+            background-image: url("{% static 'images/sec.jpg' %}");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 10px;
+            padding: 30px;
+            
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: brown;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        li {
+            background-color: #56321a; 
+            border: 1px solid #ddd; 
+            padding: 20px; /* Add padding inside each list item */
+            
+            border-radius: 8px; /* Optional: rounded corners for each itinerary */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+        }
+
+        h3 {
+            margin-top: 5px;
+            color: brown;
+            margin-bottom: 30px;
+            content-align: center;      
+        }
+
+        p {
+            margin: 15px;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .no-itinerary {
+            font-size: 1.1rem;
+            color: #777;
+            text-align: center;
+        }
+        .itinerary-content br {
+            margin-bottom: 30px; /* Adjust the value as needed */
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Suggested Itineraries for {{ destination.name }}</h2>
+    {% if itineraries %}
+    <ul>
+        {% for itinerary in itineraries %}
+            <li>
+                <h3>{{ itinerary.title }}</h3>
+                <p class="itinerary-content">{{ itinerary.content|linebreaksbr }}</p>
+
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No suggested itineraries available for this destination.</p>
+    {% endif %}
+
+    
+</body>
+</html>
+    
+    

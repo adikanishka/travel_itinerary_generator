@@ -13,14 +13,21 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 20px;
+    
 }
-
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(197, 189, 189, 0.27); /* 40% white overlay */
+    z-index: -1;
+  }
 
 /* Headings */
 h1, h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #030303;
 }
 
 /* Form Styling */
@@ -76,11 +83,12 @@ th, td {
     padding: 12px 15px;
     text-align: center;
     border-bottom: 1px solid #ccc;
+    color: #000;
 }
 
 th {
     background-color: #8a4e21;
-    color: #fff;
+    color: #050505;
 }
 
 tr:nth-child(even) {
@@ -92,6 +100,7 @@ p[style*="color: red"] {
     text-align: center;
     font-weight: bold;
     font-size: 1.1rem;
+    
 }
 
 /* Responsive Adjustments */

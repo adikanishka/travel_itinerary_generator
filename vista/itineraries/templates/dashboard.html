@@ -32,7 +32,9 @@
             <div class="suggested-itineraries">
             {% for destination in suggested_destinations %}
                 <div class="destination-card">
-                    <img src="{{ destination.image }}" alt="{{ destination.name }}" class="destination-image">
+                    <a href="{% url 'destination_suggested_itineraries' destination.id %}">
+                        <img src="{{ destination.image }}" alt="{{ destination.name }}" class="destination-image">
+                    </a>
                     <h4>{{ destination.name }}</h4>
                     <p>{{ destination.location }}</p>
                     <p>{{ destination.description }}</p>
@@ -67,40 +69,19 @@
 
         <!-- Travel Tips -->
         <div class="container">
-            <h2>🌟 Travel Tips</h2>
+            <h2>✈️ Travel Tips</h2>
             <ul>
-                {% for tip in travel_tips %}
-                    <li>{{ tip }}</li>
-                {% empty %}
-                    <p>No travel tips available.</p>
-                {% endfor %}
+                <li>Research your destination: Culture, customs, and local laws.</li>
+                <li>Pack light: Essentials only, check the weather.</li>
+                <li>Stay connected: Local SIM or roaming plan.</li>
+                <li>Keep copies of important documents: Passport, tickets, etc.</li>
+                <li>Be flexible: Plans can change, embrace the adventure!</li>
             </ul>
+            
+
         </div>
 
-        <!-- Weather Updates -->
-        <div class="container">
-            <h2>🌤️ Weather Updates</h2>
-            <ul>
-                {% for update in weather_updates %}
-                    <li>{{ update }}</li>
-                {% empty %}
-                    <p>No weather updates available.</p>
-                {% endfor %}
-            </ul>
-        </div>
-
-        <!-- Local Events -->
-        <div class="container">
-            <h2>🎉 Local Events</h2>
-            <ul>
-                {% for event in local_events %}
-                    <li>{{ event }}</li>
-                {% empty %}
-                    <p>No local events available.</p>
-                {% endfor %}
-            </ul>
-        </div>
-
+        
         <!-- Logout -->
         <div class="container center-text">
             <a href="{% url 'logout' %}">🚪 Logout</a>

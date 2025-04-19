@@ -20,7 +20,8 @@ class Itinerary(models.Model):
         default="car"
     )
     budget = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    destinations = models.TextField()  # Simplified: store as JSON string
+    # destinations = models.TextField()  # Simplified: store as JSON string
+    destinations = models.ManyToManyField('Destination', related_name='itineraries')
     content = models.TextField()       #  AI-generated itinerary text
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -58,6 +59,14 @@ class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.category} - {self.estimated_cost}"
+    
+class SuggestedItinerary(models.Model):
+
+    title = models.CharField(max_length=100)
+    destinations = models.ManyToManyField(Destination, related_name='suggested_itineraries')
+    content = models.TextField()  # Pre-written itinerary content
+    def __str__(self):
+        return f"{self.title} (Suggested)"
 
 
 
