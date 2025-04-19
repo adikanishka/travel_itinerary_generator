@@ -15,38 +15,50 @@
 </head>
 <body>
     <div class="page-wrapper">
+    <div class="container">
         <h1 class="main-heading">🛫 ITINERARY FROM  <span>{{ source }}</span> to <span>{{ destination }}</span></h1>
-        <div class="container">
-        <div class="info-travel-wrapper">
+        <br>
+        
             <div class="info-container">
                 <p><strong>📅 Start Date:</strong> {{ start_date }}</p>
                 <p><strong>📅 End Date:</strong> {{ end_date }}</p>
                 <p><strong>💰 Budget:</strong> ₹{{ budget }}</p>
                 <a href="{% url 'places' %}?destination={{ destination }}&start_date={{ start_date }}&end_date={{ end_date }}">🌍 Places to Explore</a>
             </div>
-            <div class="weather-container">
-                <h2>🌤️ WEATHER FORECAST</h2>
-                {% if weather_data %}
-                <ul>
-                    {% for day in weather_data %}
-                    <li>
-                        <strong>{{ day.datetime }}</strong><br>
-                        Max: {{ day.tempmax }}°C | Min: {{ day.tempmin }}°C<br>
-                        {{ day.description }}
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p>No weather data available.</p>
-                {% endif %}
-            </div>
-        </div>
+            <br><br>
+        
+        <div class="info-travel-wrapper">
             <div class="travel-container">
                 <h2>📍 TRAVEL PLAN</h2>
                 <p>{{ itinerary|linebreaksbr }}</p>
             </div>
+        </div>
+    </div>
+        <div class="weather-container">
+            <h2>🌤️ WEATHER FORECAST</h2>
+            <br><br>
+            <p><strong>Weather in {{ destination }} from {{ start_date }} to {{ end_date }}</strong></p>
+            <br>
+            <p>Weather data is provided by <a href="https://www.weatherapi.com/" target="_blank">WeatherAPI</a>.</p>
+            <br>
+            <p>Note: Weather data is subject to change and may not be accurate.</p>
+            <br>
+            <p><strong>Weather Summary:</strong></p>
         
-
+            {% if weather_data %}
+            <ul>
+                {% for day in weather_data %}
+                <li>
+                    <strong>{{ day.datetime }}</strong><br>
+                    Max: {{ day.tempmax }}°C | Min: {{ day.tempmin }}°C<br>
+                    {{ day.description }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No weather data available.</p>
+            {% endif %}
+        </div>
 
     </div>
 </body>

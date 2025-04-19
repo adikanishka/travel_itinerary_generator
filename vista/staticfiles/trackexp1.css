@@ -12,7 +12,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 0px;
+    padding: 20px;
     
 }
 body::after {

@@ -5,16 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'itineraries/dashboard1.css' %}">
-        
+    <link rel="stylesheet" href="{% static 'nav.css' %}">    
     <style>
         body {
           background-image: url("{% static 'images/sec.jpg' %}");
         }
+        
     </style>
 </head>
 <body>
-
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">
+                <span class="logo-icon">🌍</span> VistaStories
+              </a>
+              
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'track_expenses' %}">Track Expenses</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+      
     <div class="dashboard">
 
         <!-- Welcome Section (Centered) -->
@@ -22,7 +46,7 @@
             <div class="container">
                 <h1>Welcome to Your Travel Dashboard, {{ user.username }} 🌍</h1>
                 <a href="{% url 'generate' %}">🗺️ Generate New Itinerary</a><br>
-                <button onclick="window.open('{% url 'track_expenses' %}', '_blank')">💰 Track Your Travel Expenses</button>
+                {% comment %} <button onclick="window.open('{% url 'track_expenses' %}', '_blank')">💰 Track Your Travel Expenses</button> {% endcomment %}
             </div>
         </div>
 
@@ -79,12 +103,6 @@
             </ul>
             
 
-        </div>
-
-        
-        <!-- Logout -->
-        <div class="container center-text">
-            <a href="{% url 'logout' %}">🚪 Logout</a>
         </div>
 
     </div>

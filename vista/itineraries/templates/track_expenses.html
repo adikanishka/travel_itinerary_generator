@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
     <link rel="stylesheet" href="{% static 'trackexp1.css' %}">
     <style>
         body {
@@ -14,6 +19,25 @@
     <title>Track Expenses</title>
 </head>
 <body>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">
+                <span class="logo-icon">🌍</span> VistaStories
+              </a>
+              
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'track_expenses' %}">Track Expenses</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
     <h1>Track Your Expenses</h1>
     
     <form method="POST">
@@ -40,7 +64,7 @@
         {% endfor %}
     </table>
     <h2>Total Expenses</h2>
-<p><strong>Total Spent:</strong> ${{ total_expense }}</p>
+<p><strong>Total Spent:</strong> {{ total_expense }}</p>
 
 <h2>Category-wise Expenses</h2>
 <table>

@@ -22,17 +22,14 @@ body, html {
 
 /* Page Wrapper */
 .page-wrapper {
-    background-color: rgba(133, 93, 79, 0.418);
+    background-color: rgba(133, 93, 79, 0.9);
     padding: 40px;
     border-radius: 20px;
-    max-width: 1200px; /* Increased the max width for a wider layout */
-    width: 100%;
+    max-width: 1000px;
     margin: auto;
-    display: flex;
-    justify-content: space-between; /* Aligns the content and weather side-by-side */
-    gap: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
+
 /* Main heading styling */
 .main-heading {
     text-align: center;
@@ -48,7 +45,6 @@ body, html {
     border-radius: 20px;
     max-width: 1000px;
     width: 100%;
-    flex:1;
 }
 
 /* Flexbox for the info and travel sections */
@@ -94,14 +90,8 @@ body, html {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-width: 280px; /* Ensure the weather container has a minimum width */
-    width: 300px; /* Set a fixed width for the weather container */
-    position: sticky;
-    top: 20px;
-    height: auto; /* Allow the height to adjust according to content */
-    overflow-y: auto;
-    max-height: none;
 }
+
 /* Weather list style */
 .weather-container ul {
     list-style-type: none;
@@ -114,6 +104,7 @@ body, html {
     font-size: 1rem;
     color: #444;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .page-wrapper {

@@ -54,7 +54,7 @@ a, button {
 }
 
 a:hover, button:hover {
-    background-color: #e8e4e43f;
+    background-color: #80e844;
 }
 .suggested-itineraries {
     display: flex;

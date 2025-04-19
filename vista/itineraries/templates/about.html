@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'nav.css' %}">    
+    <style>
+        body {
+          background-image: url("{% static 'images/sec.jpg' %}");
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">
+                <span class="logo-icon">🌍</span> VistaStories
+              </a>
+              
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'track_expenses' %}">Track Expenses</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <h1>🌍 About VistaStories</h1>
+        <p>Welcome to VistaStories! We are passionate about travel and helping you create unforgettable experiences.</p>
+        <p>Our mission is to provide you with the best travel itineraries, tips, and resources to make your journeys memorable.</p>
+        <p>We believe that travel should be seamless, exciting, and memorable. That’s why we built VistaStories — a smart itinerary generator and travel dashboard designed to help you effortlessly plan your trips, track expenses, and discover new destinations.
+        <p>Join us in exploring the world, one destination at a time!</p>
+        <br>
+        <h2>✈️ What You Can Do:<h2>
+        <ul style="font-size: 14px;">
+            <li>Generate personalized travel itineraries based on your preferences.</li>
+            <li>Track your travel expenses and stay within budget.</li>
+            <li>Discover new destinations and get inspired for your next adventure.</li>
+            <li>Access Travel Tips to make your journeys smoother and safer.</li>
+            <li>View Suggested Destinations based on your past trips.</li>
+        </ul>
+        <br>
+        <h4>Whether you're a spontaneous adventurer or a meticulous planner, VistaStories has something for you.</h4>
+        <br>
+        <h4>📖 Why We Built This:</h4>
+        <p>Travel planning can be overwhelming with so many options to choose from. We wanted to create a platform that combines smart suggestions, budget management, and beautiful destination inspiration — all in one place.</p>
+        <p style="text-align: center;">Happy travels! 🌍✈️</p>
+    </div>
+        <footer>
+            <p>&copy; 2025 Vista Travel. All rights reserved.</p>
+            <p>Privacy Policy | Terms of Service</p>
+        </footer>
+
+        <style>
+            .container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color:rgba(86, 50, 26, 0.91);
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: left;
+                color: #fff;
+            }
+            footer {
+                background-color:rgba(248, 248, 248, 0.6);
+                padding: 10px;
+                text-align: center;
+                
+                bottom: 0;
+                width: 100%;
+            }
+            footer a {
+                color:rgb(0, 0, 0);
+            }
+            footer a:hover {
+                text-decoration: underline;
+            }
+            footer p {
+                margin: 0;
+            }
+            footer p:last-child {
+                margin-bottom: 0;
+            }
+            
+        </style>

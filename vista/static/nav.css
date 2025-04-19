@@ -1,0 +1,61 @@
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #4e342e; /* deep brown */
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #fff3e0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+  }
+  .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand span.logo-icon {
+    font-size: 32px;
+    margin-right: 8px;
+}
+
+  
+  .logo:hover {
+    background-color: #58462c;
+    color: #3e2723;
+    text-decoration: none;
+  }
+  
+  .navbar-custom{
+    background-color: #56321a; /* SaddleBrown */
+    border-color: #56321a;
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav > li > a {
+    color: #56321a;
+  }
+  
+  .navbar-custom .navbar-brand:hover,
+  .navbar-custom .nav > li > a:hover {
+    color: #000000; /* Gold on hover */
+  }
+  a, button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #987552;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
