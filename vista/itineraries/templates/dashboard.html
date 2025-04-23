@@ -105,6 +105,18 @@
 
         </div>
 
+        <div class="container">
+            <h2>📝 We’d love your feedback!</h2>
+            <form method="post" action="{% url 'feedback' %}">
+                {% csrf_token %}
+                <p>{{ form.comments.label_tag }}<br>{{ form.comments }}</p>
+                <p>{{ form.rating.label_tag }}<br>{{ form.rating }}</p>
+                <button type="submit">Submit Feedback</button>
+            </form>
+          </div>
+          
+          
+
     </div>
 </body>
 </html>

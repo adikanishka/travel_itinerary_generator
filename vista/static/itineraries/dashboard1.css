@@ -11,7 +11,7 @@ background-color: rgb(255, 255, 255);
 .dashboard {
 width: 100%;
 max-width: 1000px;
-margin-left: 10vw;  /* shifted left */
+margin-left: 5px;  /* shifted left */
 padding: 40px 20px;
 }
 
@@ -113,6 +113,12 @@ a:hover, button:hover {
 ul {
     padding-left: 20px;
 }
+.container form textarea {
+    color: black !important; 
+    background-color: #f0f0f0 !important; 
+    border: 1px solid #ccc; 
+  }
+  
 @keyframes slideUp {
     0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }

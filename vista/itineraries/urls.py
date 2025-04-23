@@ -23,4 +23,5 @@ urlpatterns = [
     path('destination/<int:destination_id>/itineraries/', views.destination_suggested_itineraries, name='destination_suggested_itineraries'),
     path('about/', views.about_view, name='about'),
     path('contact/', views.contact_view, name='contact'),
+    path('feedback/', views.feedback_view, name='feedback'),
 ]

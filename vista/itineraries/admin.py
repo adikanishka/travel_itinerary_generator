@@ -10,3 +10,7 @@ admin.site.register(SuggestedItinerary)
 
 class SuggestedItineraryAdmin(admin.ModelAdmin):
     filter_horizontal = ('destinations',)
+
+from .models import Feedback
+
+admin.site.register(Feedback)

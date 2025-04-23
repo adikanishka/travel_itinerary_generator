@@ -26,17 +26,34 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
+from .forms import FeedbackForm
 def dashboard_view(request):
     if request.user.is_authenticated:
-        # Fetch user-specific data if needed
+        # Fetch user-specific data
         user_itineraries = Itinerary.objects.filter(user=request.user).order_by('-created_at')
-    
-    # Suggested itineraries (Fetching random itineraries)
         suggested_destinations = Destination.objects.all()
-        return render(request, 'dashboard.html', {
+
+        # Handle feedback form
+        if request.method == 'POST':
+            form = FeedbackForm(request.POST)
+            if form.is_valid():
+                feedback = form.save(commit=False)
+                feedback.user = request.user
+                feedback.save()
+                return redirect('dashboard')  # avoid resubmission on page reload
+        else:
+            form = FeedbackForm()
+
+        # Final context
+        context = {
             'user_itineraries': user_itineraries,
-            'suggested_destinations': suggested_destinations
-            })
+            'suggested_destinations': suggested_destinations,
+            'form': form
+        }
+        return render(request, 'dashboard.html', context)
+
+    # Redirect if not authenticated
+    return redirect('login')
 
 def logout_view(request):
     logout(request)
@@ -301,3 +318,17 @@ def about_view(request):
     return render(request, 'about.html')
 def contact_view(request):
     return render(request, 'contact.html')
+
+from .forms import FeedbackForm
+def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.user = request.user
+            feedback.save()
+            return redirect('dashboard')  # or wherever you want to go
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form})
+

@@ -66,6 +66,16 @@ class SuggestedItinerary(models.Model):
     content = models.TextField()  # Pre-written itinerary content
     def __str__(self):
         return f"{self.title} (Suggested)"
+    
+# Feedback Model
+
+class Feedback(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comments = models.TextField()
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return f"Feedback from {self.user.username}"
 
 
 
